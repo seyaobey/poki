@@ -1,3 +1,4 @@
+/// <reference path="../../node_modules/@types/backendless/index.d.ts" />
 
 
 import * as React from 'react';
@@ -9,13 +10,20 @@ Content, InputGroup, Input, Grid, Col,
 Card, CardItem, Button, Icon } from 'native-base';
 
 import Backendless from 'backendless'; 
+import BusyIndicator from 'react-native-busy-indicator';
+import loaderHandler from 'react-native-busy-indicator/LoaderHandler';
 
 
+
+export interface LoginPageProps extends React.Props<any>{
+    owner: Component<any,any>
+}
 export class LoginPage extends Component<any, any>{
+  
+    props:LoginPageProps;
 
 
     render(){
-
 
         var that = this;
 
@@ -36,10 +44,9 @@ export class LoginPage extends Component<any, any>{
 
                                 <CardItem>
 
-
                                     <InputGroup>
                                         <Icon name="ios-person" style={{ color: '#0A69FE' }} />
-                                        <Input placeholder="Email" email 
+                                        <Input placeholder="Email" 
                                           onChange={(e:any) => {that.txt_email = e.nativeEvent.text}} />
                                     </InputGroup>
 
@@ -51,20 +58,24 @@ export class LoginPage extends Component<any, any>{
                                     </InputGroup>
 
 
-                                    <Button block warning style={{marginTop:40}} 
+                                    <Button block bordered warning style={{marginTop:40}} 
                                         onPress={this.login.bind(this)}> Login </Button>
 
-                                    <Button block success style={{marginTop:15}}
+                                    <Button block bordered success style={{marginTop:15}}
                                         onPress={this.signup.bind(this)}> Sign up </Button>
 
 
                                 </CardItem>
+
+                                <BusyIndicator />
 
                             </Card>
 
                         </Col>
 
                     </Grid>
+
+                    <BusyIndicator overlayHeight={25} />
 
                 </Content>
 
@@ -78,8 +89,26 @@ export class LoginPage extends Component<any, any>{
 
 
     private login(){
-    }
+        
+        loaderHandler.showLoader("Loading");
 
+        Backendless.UserService.login(this.txt_email, this.txt_password, true, new Backendless.Async( succ =>{
+
+            loaderHandler.hideLoader();
+
+            this.props.owner['onLogin']();
+            
+
+        }, err =>{
+
+            loaderHandler.hideLoader();
+
+            alert('Login failure' + JSON.stringify(err));
+        }));
+        
+
+    }
+    
 
     private signup(){    
 

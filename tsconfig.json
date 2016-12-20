@@ -6,6 +6,7 @@
         "noImplicitAny": false ,
         "jsx": "react",
         "moduleResolution": "node",
+        //"module": "commonjs",
         "typeRoots": [
             "./node_modules/@types",
             "./typings"

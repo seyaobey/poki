@@ -6,11 +6,11 @@ import Backendless from 'backendless';
 var Btn = Button;
 export class HomePage extends Component {
     get user_logged_in() {
-        return Backendless.UserService.isValidLogin();
+        return Backendless.UserService.loggedInUser() != undefined;
     }
     render() {
         if (!this.user_logged_in) {
-            return (React.createElement(LoginPage, null));
+            return (React.createElement(LoginPage, {owner: this}));
         }
         else {
             return (React.createElement(Drawer, {ref: (ref) => { this._drawer = ref; }, type: "displace", tapToClose: true, acceptPan: false, openDrawerOffset: 0.2, panCloseMask: 0.2, tweenHandler: (ratio) => {
@@ -24,6 +24,9 @@ export class HomePage extends Component {
                 React.createElement(AppHeader, {owner: this})
             ));
         }
+    }
+    onLogin() {
+        this.forceUpdate();
     }
     toggle_drawer(open) {
         if (open) {

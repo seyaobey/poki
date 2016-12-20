@@ -12,11 +12,12 @@ import Backendless from 'backendless';
 
 var Btn:any = Button;
 
+
 export class HomePage extends Component<any, any>{
 
     private get user_logged_in():boolean{
 
-        return Backendless.UserService.isValidLogin();
+        return Backendless.UserService.loggedInUser() != undefined;
     }
 
     render(){
@@ -24,7 +25,7 @@ export class HomePage extends Component<any, any>{
         if(!this.user_logged_in){
 
             return (
-                <LoginPage />
+                <LoginPage owner={this} />
             );
             
         }else{
@@ -59,9 +60,11 @@ export class HomePage extends Component<any, any>{
         
     }
 
-
-
     private _drawer:any
+
+    onLogin(){
+        this.forceUpdate();
+    }
 
 
     toggle_drawer(open:boolean){
