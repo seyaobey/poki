@@ -14,11 +14,15 @@
     "react-native-busy-indicator": "^1.0.9",
     "react-native-easy-grid": "^0.1.7",
     "react-native-google-signin": "^0.8.0",
+<<<<<<< HEAD
     "react-native-loading": "^0.1.0",
     "react-native-loading-spinner-overlay": "^0.4.1",
     "react-native-progress-hud": "^1.0.4",
     "react-native-simple-modal": "^4.0.1",
     "react-native-sleek-loading-indicator": "^0.1.3"
+=======
+    "react-native-loading-spinner-overlay": "^0.4.1"
+>>>>>>> e0c0b89850170cef71959c505cf36230f8632d06
   },
   "devDependencies": {
     "@types/react-native": "^0.37.1",

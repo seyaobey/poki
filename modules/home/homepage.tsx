@@ -12,9 +12,13 @@ import Backendless from 'backendless';
 
 var Btn:any = Button;
 
+<<<<<<< HEAD
 interface HomePageState {
     reload: boolean    
 }
+=======
+
+>>>>>>> e0c0b89850170cef71959c505cf36230f8632d06
 export class HomePage extends Component<any, any>{
 
     state: HomePageState;
@@ -64,6 +68,10 @@ export class HomePage extends Component<any, any>{
     }
 
     private _drawer:any
+
+    onLogin(){
+        this.forceUpdate();
+    }
 
 
     toggle_drawer(open:boolean){

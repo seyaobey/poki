@@ -5,7 +5,7 @@ var View = rn.View;
 const splashscreen = require('../../img/splashscreen.png');
 export class SplashPage extends Component {
     render() {
-        return (React.createElement(View, { style: { flex: 1 } }));
+        return (React.createElement(View, {style: { flex: 1 }}));
     }
 }
 //# sourceMappingURL=splashpage.js.map

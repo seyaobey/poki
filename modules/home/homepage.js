@@ -10,19 +10,27 @@ export class HomePage extends Component {
     }
     render() {
         if (!this.user_logged_in) {
+<<<<<<< HEAD
             return (React.createElement(LoginPage, { owner: this }));
+=======
+            return (React.createElement(LoginPage, {owner: this}));
+>>>>>>> e0c0b89850170cef71959c505cf36230f8632d06
         }
         else {
-            return (React.createElement(Drawer, { ref: (ref) => { this._drawer = ref; }, type: "displace", tapToClose: true, acceptPan: false, openDrawerOffset: 0.2, panCloseMask: 0.2, tweenHandler: (ratio) => {
-                    return {
-                        drawer: { shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5 },
-                        main: {
-                            opacity: (2 - ratio) / 2,
-                        },
-                    };
-                }, negotiatePan: true, content: React.createElement(AppMenu, null) },
-                React.createElement(AppHeader, { owner: this })));
+            return (React.createElement(Drawer, {ref: (ref) => { this._drawer = ref; }, type: "displace", tapToClose: true, acceptPan: false, openDrawerOffset: 0.2, panCloseMask: 0.2, tweenHandler: (ratio) => {
+                return {
+                    drawer: { shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5 },
+                    main: {
+                        opacity: (2 - ratio) / 2,
+                    },
+                };
+            }, negotiatePan: true, content: React.createElement(AppMenu, null)}, 
+                React.createElement(AppHeader, {owner: this})
+            ));
         }
+    }
+    onLogin() {
+        this.forceUpdate();
     }
     toggle_drawer(open) {
         if (open) {
@@ -42,16 +50,19 @@ export class HomePage extends Component {
 }
 class AppMenu extends Component {
     render() {
-        return (React.createElement(Content, null,
-            React.createElement(Header, null,
-                React.createElement(Title, null, "Application Menu"))));
+        return (React.createElement(Content, null, 
+            React.createElement(Header, null, 
+                React.createElement(Title, null, "Application Menu")
+            )
+        ));
     }
 }
 class AppHeader extends Component {
     render() {
-        return (React.createElement(Header, null,
-            React.createElement(Btn, { transparent: true, ref: "btn", onPress: this.btn_pressed.bind(this) },
-                React.createElement(Icon, { name: 'ios-menu' })),
+        return (React.createElement(Header, null, 
+            React.createElement(Btn, {transparent: true, ref: "btn", onPress: this.btn_pressed.bind(this)}, 
+                React.createElement(Icon, {name: 'ios-menu'})
+            ), 
             React.createElement(Title, null, "Poki")));
     }
     btn_pressed() {

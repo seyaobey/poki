@@ -2,8 +2,13 @@
 // Please do not modify it manually. All changes will be lost.
 try {
     var path = require("path");
+<<<<<<< HEAD
     var Launcher = require("C:\\Users\\eobey\\.vscode\\extensions\\vsmobile.vscode-react-native-0.2.4\\out\\debugger\\launcher.js").Launcher;
     new Launcher("c:\\developper\\react.native\\poki", "c:\\developper\\react.native\\poki").launch();
+=======
+    var Launcher = require("C:\\Users\\seyaobey\\.vscode\\extensions\\vsmobile.vscode-react-native-0.2.4\\out\\debugger\\launcher.js").Launcher;
+    new Launcher("c:\\Developper\\react_native\\poki", "c:\\Developper\\react_native\\poki").launch();
+>>>>>>> e0c0b89850170cef71959c505cf36230f8632d06
 } catch (e) {
     throw new Error("Unable to launch application. Try deleting .vscode/launchReactNative.js and restarting vscode.");
 }

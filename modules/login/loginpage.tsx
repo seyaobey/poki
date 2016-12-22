@@ -1,3 +1,4 @@
+/// <reference path="../../node_modules/@types/backendless/index.d.ts" />
 
 
 import * as React from 'react';
@@ -10,17 +11,26 @@ Card, CardItem, Button, Icon } from 'native-base';
 import * as RN from 'native-base';
 
 import Backendless from 'backendless'; 
+import BusyIndicator from 'react-native-busy-indicator';
+import loaderHandler from 'react-native-busy-indicator/LoaderHandler';
 
 import Modal from 'react-native-simple-modal';
 
 
+<<<<<<< HEAD
 interface LoginPageState {
     loading: boolean
 }
 export interface LoginPageProps extends React.Props<any>{
    owner: Component<any,any>
+=======
+export interface LoginPageProps extends React.Props<any>{
+    owner: Component<any,any>
+>>>>>>> e0c0b89850170cef71959c505cf36230f8632d06
 }
 export class LoginPage extends Component<any, any>{
+  
+    props:LoginPageProps;
 
     state: LoginPageState;
     props: LoginPageProps;
@@ -33,8 +43,12 @@ export class LoginPage extends Component<any, any>{
         }
     }
 
+<<<<<<< HEAD
 
     render(){
+=======
+        var that = this;
+>>>>>>> e0c0b89850170cef71959c505cf36230f8632d06
 
         var that = this;
         
@@ -54,7 +68,6 @@ export class LoginPage extends Component<any, any>{
                             <Card>
 
                                 <CardItem>
-
 
                                     <InputGroup>
                                         <Icon name="ios-person" style={{ color: '#0A69FE' }} />
@@ -78,6 +91,7 @@ export class LoginPage extends Component<any, any>{
 
                                 </CardItem>
 
+<<<<<<< HEAD
                                 <Modal            
                                      open={this.state.loading}
                                      modalDidOpen={() => console.log('modal did open')}
@@ -88,6 +102,9 @@ export class LoginPage extends Component<any, any>{
                                          <Text style={{fontSize: 20, textAlign:'center'}}>Logging, please wait...</Text>                  
                                        </View>
                                  </Modal>
+=======
+                                <BusyIndicator />
+>>>>>>> e0c0b89850170cef71959c505cf36230f8632d06
 
                             </Card>
 
@@ -97,7 +114,11 @@ export class LoginPage extends Component<any, any>{
 
                     </Grid>
 
+<<<<<<< HEAD
                     
+=======
+                    <BusyIndicator overlayHeight={25} />
+>>>>>>> e0c0b89850170cef71959c505cf36230f8632d06
 
                 </Content>
 
@@ -111,6 +132,7 @@ export class LoginPage extends Component<any, any>{
 
 
     private login(){
+<<<<<<< HEAD
 
         this.setState({
             loading: true
@@ -151,7 +173,28 @@ export class LoginPage extends Component<any, any>{
         });
         
     }
+=======
+        
+        loaderHandler.showLoader("Loading");
 
+        Backendless.UserService.login(this.txt_email, this.txt_password, true, new Backendless.Async( succ =>{
+>>>>>>> e0c0b89850170cef71959c505cf36230f8632d06
+
+            loaderHandler.hideLoader();
+
+            this.props.owner['onLogin']();
+            
+
+        }, err =>{
+
+            loaderHandler.hideLoader();
+
+            alert('Login failure' + JSON.stringify(err));
+        }));
+        
+
+    }
+    
 
     private signup(){    
 
