@@ -1,1 +1,1 @@
-/// <reference path="modules/react/index.d.ts" />
+/// <reference path="../.vscode/typings/react-native/react-native.d.ts" />

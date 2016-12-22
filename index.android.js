@@ -16,7 +16,7 @@ import { AnatomyExample } from './modules/anatomy/anatomyPage';
 import { HomePage } from './modules/home/homepage';
 import { SplashPage } from './modules/splashscreen/splashpage'
 
-var Backendless = require('backendless');    
+import * as Backendless from 'backendless';    
 
 export default class poki extends Component {
 

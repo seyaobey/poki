@@ -12,11 +12,16 @@ import Backendless from 'backendless';
 
 var Btn:any = Button;
 
+interface HomePageState {
+    reload: boolean    
+}
 export class HomePage extends Component<any, any>{
+
+    state: HomePageState;
 
     private get user_logged_in():boolean{
 
-        return Backendless.UserService.isValidLogin();
+        return Backendless.UserService.loggedInUser() != undefined;
     }
 
     render(){
@@ -24,7 +29,7 @@ export class HomePage extends Component<any, any>{
         if(!this.user_logged_in){
 
             return (
-                <LoginPage />
+                <LoginPage owner={this} />
             );
             
         }else{
@@ -55,11 +60,8 @@ export class HomePage extends Component<any, any>{
             );
 
         }
-
         
     }
-
-
 
     private _drawer:any
 
@@ -71,7 +73,16 @@ export class HomePage extends Component<any, any>{
         }else{
             this._drawer.close();
         }
+    }
 
+
+    onLogin(){
+
+        this.setState({
+            reload: true
+        }, ()=>{
+            this.state.reload = false
+        })
     }
 }
 
